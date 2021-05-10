@@ -43,11 +43,9 @@ def form_edit_get(oscar_id):
 @app.route('/edit/<int:oscar_id>', methods=['POST'])
 def form_update_post(oscar_id):
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('Index'), request.form.get('Year'), request.form.get('Age'),
-                 request.form.get('Name'), request.form.get('Movie'),
+    inputData = (request.form.get('Index'), request.form.get('Year'), request.form.get('Age'), request.form.get('Name'), request.form.get('Movie'),
                  request.form.get('Column_6'), oscar_id)
-    sql_update_query = """UPDATE oscarData.oscars t SET t.Index = %s, t.Year = %s, t.Age = %s, t.Name = 
-    %s, t.Movie = %s, t.Column_6 = %s WHERE t.id = %s """
+    sql_update_query = """UPDATE oscarData.oscars t SET t.Index = %s, t.Year = %s, t.Age = %s, t.Name =  %s, t.Movie = %s, t.Column_6 = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -64,7 +62,7 @@ def form_insert_post():
     inputData = (request.form.get('Index'), request.form.get('Year'), request.form.get('Age'),
                  request.form.get('Name'), request.form.get('Movie'),
                  request.form.get('Column_6'))
-    sql_insert_query = """INSERT INTO oscars (Index,Year,Age,Name,Movie,Column_6) VALUES (%s, %s,%s, %s,%s, %s) """
+    sql_insert_query = """INSERT INTO oscars (Index,Year,Age,Name,Movie,Column_6) VALUES (%s,%s,%s,%s,%s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -122,7 +120,7 @@ def api_add() -> str:
     inputData = (content['Index'], content['Year'], content['Age'],
                  content['Name'], content['Movie'],
                  request.form.get('Column_6'))
-    sql_insert_query = """INSERT INTO oscars (Index,Year,Age,Name,Movie,Column_6) VALUES (%s, %s,%s, %s,%s, %s) """
+    sql_insert_query = """INSERT INTO oscars (Index,Year,Age,Name,Movie,Column_6) VALUES (%s,%s,%s,%s,%s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')

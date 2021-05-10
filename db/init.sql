@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS oscars (
     `Column_6` VARCHAR(48) CHARACTER SET utf8,
     PRIMARY KEY (`id`)
 );
-INSERT INTO oscars (Index, Year, Age, Name, Movie, Column_6) VALUES
+INSERT INTO oscars (`Index`,`Year`,`Age`,`Name`, `Movie` ,`Column_6`) VALUES
     ( 1, 1928, 22,' "Janet Gaynor"',' "Seventh Heaven',' Street Angel and Sunrise: A Song of Two Humans"'),
     ( 2, 1929, 37,' "Mary Pickford"',' "Coquette"',NULL),
     ( 3, 1930, 28,' "Norma Shearer"',' "The Divorcee"	',NULL),
@@ -101,3 +101,4 @@ INSERT INTO oscars (Index, Year, Age, Name, Movie, Column_6) VALUES
     (87, 2014, 44,' "Cate Blanchett"',' "Blue Jasmine"',NULL),
     (88, 2015, 54,' "Julianne Moore"',' "Still Alice"',NULL),
     (89, 2016, 26,' "Brie Larson"',' "Room"',NULL);
+
